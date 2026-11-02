@@ -66,11 +66,55 @@ secciones:
     texto: "Cada sesión empieza con una valoración y termina con pautas para casa. Te damos factura para tu seguro o mutua."
     imagen: /fotos/tratamientos.jpg
     tratamientos:
-      - { nombre: Fisioterapia general, texto: "Dolor de espalda, cuello y hombro, contracturas y sobrecargas. Terapia manual y ejercicio terapéutico.", duracion: "50 min", modalidad: Presencial, precio: "40 €" }
-      - { nombre: Osteopatía, texto: "Valoración global y técnicas suaves sobre articulaciones y tejidos para los dolores que vuelven.", duracion: "60 min", modalidad: Presencial, precio: "50 €" }
-      - { nombre: Fisioterapia deportiva, texto: "Esguinces, roturas fibrilares y tendinopatías. Readaptación hasta que vuelves a entrenar.", duracion: "50 min", modalidad: Presencial, precio: "45 €" }
+      - nombre: Fisioterapia general
+        texto: "Dolor de espalda, cuello y hombro, contracturas y sobrecargas. Terapia manual y ejercicio terapéutico."
+        duracion: "50 min"
+        modalidad: Presencial
+        precio: "40 €"
+        imagenes: "/fotos/sala-camillas.jpg; /fotos/material.jpg"
+        detalle: |
+          Es la consulta de siempre para el dolor que te frena en el día a día: la espalda que se bloquea al agacharte, el cuello cargado después de una semana frente al ordenador, el hombro que protesta al coger peso. Empezamos por escuchar cuándo aparece el dolor, qué lo mejora y qué lo empeora, y revisamos cómo te mueves antes de tocar nada.
+
+          Durante la sesión combinamos terapia manual sobre músculos y articulaciones con ejercicio terapéutico adaptado a tu estado. Si encaja, añadimos punción seca o vendaje funcional. Todo se hace en una camilla individual, con tiempo para preguntar y sin prisas.
+
+          Al terminar te llevas pautas claras para casa: qué ejercicios repetir, qué posturas evitar y cuándo conviene volver. Si en la valoración vemos algo que no es de nuestra mano, te lo decimos y te orientamos hacia el especialista adecuado. Te damos factura para tu seguro o tu mutua cuando la necesites.
+      - nombre: Osteopatía
+        texto: "Valoración global y técnicas suaves sobre articulaciones y tejidos para los dolores que vuelven."
+        duracion: "60 min"
+        modalidad: Presencial
+        precio: "50 €"
+        imagenes: "/fotos/sala-camillas.jpg"
+        detalle: |
+          La osteopatía está pensada para los dolores que vuelven una y otra vez, aunque ya hayas probado otros tratamientos. En lugar de mirar solo la zona que duele, observamos el cuerpo como un conjunto: la pelvis puede estar detrás de unas lumbares cargadas y un tobillo antiguo puede explicar una rodilla que protesta.
+
+          La primera parte de la sesión es una valoración global con tu historia, tu postura y la movilidad de columna, caderas y hombros. Después aplicamos técnicas suaves y sin brusquedad sobre articulaciones, músculos y fascias. Muchas personas notan alivio al terminar y una sensación de cuerpo más suelto en los días siguientes.
+
+          Es un tratamiento adecuado para adultos de cualquier edad, también para quien llega con miedo a que le toquen la espalda. Siempre trabajamos con tu consentimiento y a tu ritmo, y te explicamos qué hacemos y por qué. Si hace falta combinarlo con ejercicio o con otra terapia del centro, lo planteamos juntos.
+      - nombre: Fisioterapia deportiva
+        texto: "Esguinces, roturas fibrilares y tendinopatías. Readaptación hasta que vuelves a entrenar."
+        duracion: "50 min"
+        modalidad: Presencial
+        precio: "45 €"
+        imagenes: "/fotos/sala-ejercicio.jpg; /fotos/material.jpg"
+        detalle: |
+          Si corres, juegas al pádel, vas al gimnasio o simplemente te gusta salir en bici, una lesión no tiene por qué dejarte meses en el banquillo. Tratamos esguinces, roturas fibrilares, tendinopatías, periostitis y sobrecargas con un objetivo concreto: que vuelvas a tu actividad con seguridad y sin recaídas.
+
+          El trabajo se divide en fases. Primero calmamos el dolor y la inflamación con terapia manual y los recursos que mejor encajen. Después recuperamos la movilidad y la fuerza con ejercicio progresivo en nuestra sala, y al final trabajamos el gesto deportivo: carrera, salto, giro o el movimiento propio de tu deporte.
+
+          Para decidir cuándo estás listo no nos guiamos solo por el calendario: hacemos pruebas funcionales y comparamos un lado con otro. Si lo necesitas, nos coordinamos con tu entrenador o con tu médico y te preparamos un plan para entrenar mientras te recuperas, de modo que no pierdas la forma por el camino.
       - { nombre: Rehabilitación tras cirugía, texto: "Prótesis de rodilla y cadera, ligamento cruzado y fracturas, de la mano de tu traumatólogo.", duracion: "50 min", modalidad: "Presencial y a domicilio", precio: "40 €" }
-      - { nombre: Suelo pélvico, texto: "Embarazo, posparto, incontinencia y dolor pélvico, en una sala privada con fisioterapeuta especializada.", duracion: "50 min", modalidad: Presencial, precio: "50 €" }
+      - nombre: Suelo pélvico
+        texto: "Embarazo, posparto, incontinencia y dolor pélvico, en una sala privada con fisioterapeuta especializada."
+        duracion: "50 min"
+        modalidad: Presencial
+        precio: "50 €"
+        imagenes: "/fotos/recepcion.jpg"
+        detalle: |
+          El suelo pélvico es un grupo de músculos del que casi nadie habla hasta que da problemas: pérdidas de orina al toser o saltar, sensación de pesadez, dolor en las relaciones o molestias que aparecen después del parto. Tiene solución, y empieza por sentirte cómoda y con confianza.
+
+          La sesión se hace en una sala privada, con una fisioterapeuta especializada. Comenzamos con una conversación tranquila sobre tus síntomas y tu historia, y una valoración respetuosa, siempre con tu consentimiento. Con eso diseñamos un plan a tu medida que combina ejercicios de conciencia y fortalecimiento, trabajo manual y hábitos del día a día, como respirar y colocar el cuerpo al hacer esfuerzo.
+
+          Acompañamos tanto el embarazo, para llegar al parto preparada, como el posparto, a tu ritmo y sin prisas por volver a hacer deporte. También atendemos a mujeres en otras etapas de la vida y a quien tiene dolor pélvico crónico. Lo que cuentas se queda en la consulta.
       - { nombre: Fisioterapia a domicilio, texto: "Para personas mayores o con movilidad reducida. Llevamos camilla y material.", duracion: "50 min", modalidad: A domicilio, precio: "55 €" }
     cta: { texto: Pedir cita, url: "/#cita" }
 

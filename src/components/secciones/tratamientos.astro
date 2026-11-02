@@ -2,9 +2,11 @@
 // Tratamientos: banda blanco roto. Cabeza partida (antetítulo y título a la izquierda; `texto` y `cta` a la
 // derecha), franja de foto a sangre (`imagen`, opcional) y rejilla de 3 columnas en escritorio con
 // `tratamientos: [{nombre, texto, duracion, modalidad, precio}]`: número, nombre en mayúsculas condensadas, texto y,
-// abajo, duración, modalidad («Presencial», «A domicilio»…) y precio. Lo vacío no se pinta.
+// abajo, duración, modalidad («Presencial», «A domicilio»…) y precio. Lo vacío no se pinta. Los tratamientos con
+// `detalle` tienen página propia (/tratamientos/<slug>/): el nombre es un enlace y la tarjeta entera es clicable.
 import { seccion, cadena, enlace, externo } from '../../data/site';
 import { altSeccion } from '../../lib/seo';
+import { enlaceDe } from '../../lib/paginas';
 import Imagen from '../ui/Imagen.astro';
 import Icono from '../ui/Icono.astro';
 interface Props { id: string }
@@ -44,8 +46,9 @@ const cta = enlace(s?.cta);
               return (
                 <li class="tratamiento">
                   <p class="tratamiento-num">{String(i + 1).padStart(2, '0')}</p>
-                  <h3>{t.nombre}</h3>
+                  <h3>{enlaceDe(t) ? <a href={enlaceDe(t)} class="tratamiento-enlace">{t.nombre}</a> : t.nombre}</h3>
                   {cadena(t.texto) && <p class="suave">{t.texto}</p>}
+                  {enlaceDe(t) && <span class="tratamiento-ver" aria-hidden="true">Ver más <Icono nombre="flecha" tam={16} /></span>}
                   {(cadena(t.duracion) || modalidad || cadena(t.precio)) && (
                     <div class="tratamiento-pie">
                       {cadena(t.duracion) && (

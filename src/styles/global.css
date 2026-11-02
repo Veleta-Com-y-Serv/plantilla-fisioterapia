@@ -144,6 +144,13 @@
   @media (min-width: 1200px) { .tratamientos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   .tratamiento { display: flex; flex-direction: column; gap: .8rem; padding-block: 1.75rem 2.25rem; border-top: 3px solid var(--c-primario); }
   .tratamiento-num { font-family: var(--fuente-titulos); font-stretch: 75%; font-weight: 700; font-size: 1rem; letter-spacing: .1em; color: var(--c-primario); }
+  .tratamiento { position: relative; }
+  .tratamiento-enlace { color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+  .tratamiento-enlace::after { content: ""; position: absolute; inset: 0; }
+  .tratamiento-enlace:focus-visible { outline: none; }
+  .tratamiento:has(.tratamiento-enlace:focus-visible) { outline: 2px solid var(--c-primario); outline-offset: 4px; }
+  .tratamiento:hover h3 { text-decoration: underline; text-decoration-color: var(--c-acento); text-decoration-thickness: 3px; text-underline-offset: .2em; }
+  .tratamiento-ver { display: inline-flex; align-items: center; gap: .3rem; font-size: .85rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; color: var(--c-primario); }
   .tratamiento h3 { font-size: clamp(1.8rem, 2.6vw, 2.3rem); }
   .tratamiento-pie { margin-top: auto; padding-top: .75rem; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; }
   .etiqueta { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: .35rem; min-height: 1.9rem; padding: .2rem .8rem; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }

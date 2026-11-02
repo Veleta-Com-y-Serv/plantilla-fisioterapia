@@ -32,3 +32,9 @@ formulario, `Imagen.astro`, filas 50/50); el diseño es otro. Tanda «ancho comp
   Jerez. Sin texto legible, sin logotipos, sin personas reconocibles.
 - **Qué no hacer**: arcos, serif ligera, colores salvia, cabecera transparente, tarjetas blancas; tampoco la mudanza en
   cursiva de `transporte-mudanzas` (allí el título va en cursiva pesada; aquí recto y condensado).
+
+## Páginas propias (fichas)
+Con la misma piel que la portada: cabecera y pie de la plantilla, migas en mayúsculas con barra naranja, banda de petróleo hondo
+con el título condensado, chips inclinados y la foto con corte diagonal (sin foto, su icono en un paralelogramo naranja), cuerpo
+en blanco roto con `detalle`, tabla de datos con filete petróleo y caja de cita en naranja quemado, galería en banda clara con
+fotos en diagonal y otros tratamientos con el filete y el número de la portada. Los cortes diagonales entre bandas los pone el CSS.
