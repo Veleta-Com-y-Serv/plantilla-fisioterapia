@@ -1,0 +1,55 @@
+---
+// Portada casi a pantalla completa: `imagen` a sangre (camilla o sala) bajo un velo petróleo en diagonal y un trazo
+// naranja inclinado; sin foto, petróleo hondo pleno. `antetitulo`, `titulo` enorme en mayúsculas condensadas,
+// `texto`, `cta` y `cta_secundario`. Abajo, franja naranja inclinada a todo el ancho con
+// `items: [{titulo, texto, icono}]` (sin volante, a domicilio, cita rápida…). Lo vacío no se pinta.
+import { seccion, enlace, cadena, externo } from '../../data/site';
+import { altHero } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string; primera?: boolean }
+const { id, primera = false } = Astro.props;
+const s = seccion(id);
+const cta = enlace(s?.cta);
+const cta2 = enlace(s?.cta_secundario);
+const accesos = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const foto = cadena(s?.imagen);
+const fuera = (url: string) => (externo(url) ? { rel: 'noopener', target: '_blank' } : {});
+---
+
+{
+  s && (
+    <section id={id} class:list={['hero-dinamico', !foto && 'hero-sin-foto']}>
+      {foto && <Imagen src={foto} alt={altHero()} ancho={1920} alto={1080} prioridad={primera} class="hero-foto" />}
+      <div class="hero-cuerpo">
+        <div class="contenedor">
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && <h1 class="hero-titulo">{s.titulo}</h1>}
+          {s.texto && <p class="hero-texto">{s.texto}</p>}
+          {(cta || cta2) && (
+            <div class="mt-9 flex flex-wrap gap-4">
+              {cta && <a class="btn" href={cta.url} {...fuera(cta.url)}>{cta.texto}</a>}
+              {cta2 && <a class="btn-sec" href={cta2.url} {...fuera(cta2.url)}>{cta2.texto}</a>}
+            </div>
+          )}
+        </div>
+      </div>
+      {accesos.length > 0 && (
+        <div class="hero-franja">
+          <ul class="contenedor" style={`--n:${Math.min(accesos.length, 4)}`}>
+            {accesos.map((a) => (
+              <li>
+                <span class="icono-caja"><Icono nombre={cadena(a.icono) || 'check'} tam={22} /></span>
+                <div>
+                  <p class="condensada text-[1.45rem]">{a.titulo}</p>
+                  {cadena(a.texto) && <p class="mt-1 text-[.95rem] opacity-90">{a.texto}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {accesos.length === 0 && <div class="h-[var(--d)]" aria-hidden="true" />}
+    </section>
+  )
+}

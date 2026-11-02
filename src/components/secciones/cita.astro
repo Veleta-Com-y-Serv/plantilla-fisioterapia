@@ -1,0 +1,67 @@
+---
+// Pedir cita: fila 50/50 a todo el ancho. Mitad naranja quemado con titular enorme, `texto`, `items` (pasos
+// numerados: {titulo, texto}), `cta` (WhatsApp o teléfono), `enlace_agenda` + `texto_agenda` (agenda online,
+// opcional), teléfono de contacto y `nota`. Mitad petróleo muy claro con el formulario (mailto): tratamientos de la
+// sección `tratamientos` en el desplegable, modalidades sacadas de sus `modalidad` y franja horaria.
+// `boton`: texto del botón.
+import { seccion, seccionDeTipo, site, tel, cadena, enlace, externo } from '../../data/site';
+import Icono from '../ui/Icono.astro';
+import FormularioContacto from '../ui/FormularioContacto.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const cta = enlace(s?.cta);
+const agenda = cadena(s?.enlace_agenda);
+const textoAgenda = cadena(s?.texto_agenda) || 'Agenda online';
+const nota = cadena(s?.nota);
+const boton = cadena(s?.boton) || 'Pedir cita';
+const pasos = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const telefono = site.contacto.telefono;
+const tratamientos = seccionDeTipo('tratamientos')?.tratamientos ?? [];
+const servicios = tratamientos.map((t) => cadena(t.nombre)).filter(Boolean);
+// «Presencial y a domicilio» = las dos; el resto, tal cual (sin repetir).
+const modalidades = [...new Set(tratamientos.flatMap((t) =>
+  cadena(t.modalidad).split(/\s+y\s+/i).map((m) => m.trim()).filter(Boolean).map((m) => m.charAt(0).toUpperCase() + m.slice(1)),
+))];
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class="mitades cita-mitades">
+      <div class="mitad mitad--izq banda-quemada oscura">
+        {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+        {s.titulo && <h2 class="titulo-grande mt-4">{s.titulo}</h2>}
+        {s.texto && <p class="mt-6 max-w-[34rem] text-lg suave">{s.texto}</p>}
+        {pasos.length > 0 && (
+          <ol class="pasos-cita mt-10 max-w-[34rem]">
+            {pasos.map((p) => (
+              <li>
+                <div>
+                  <p class="condensada text-[1.5rem]">{p.titulo}</p>
+                  {cadena(p.texto) && <p class="text-[.95rem] suave">{p.texto}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+        {(cta || agenda) && (
+          <div class="mt-10 flex flex-wrap gap-4">
+            {cta && <a class="btn btn-claro" href={cta.url} {...(externo(cta.url) && { rel: 'noopener', target: '_blank' })}>{cta.texto}</a>}
+            {agenda && <a class="btn-sec" href={agenda} rel="noopener" target="_blank">{textoAgenda}</a>}
+          </div>
+        )}
+        {telefono && (
+          <p class="mt-8">
+            <a class="dato-grande inline-flex min-h-11 items-center gap-3" href={tel(telefono)}>
+              <Icono nombre="telefono" tam={24} />
+              {telefono}
+            </a>
+          </p>
+        )}
+        {nota && <p class="mt-6 max-w-[34rem] text-sm suave">{nota}</p>}
+      </div>
+      <div class="mitad mitad--der banda-clara">
+        <FormularioContacto prefijo="cita" boton={boton} servicios={servicios} modalidades={modalidades} franjas={true} asunto={`Cita · ${site.nombre}`} class="max-w-[38rem]" />
+      </div>
+    </section>
+  )
+}

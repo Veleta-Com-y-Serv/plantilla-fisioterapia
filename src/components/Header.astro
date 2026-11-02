@@ -1,0 +1,55 @@
+---
+// Cabecera fija a todo el ancho, siempre sólida en petróleo hondo con filo naranja: marca (trazo inclinado con una
+// articulación + nombre en mayúsculas condensadas), menú (site.yaml → menu) y botón inclinado (site.yaml →
+// boton_cabecera). En móvil, menú plegable con <details>. Aspecto en src/styles/global.css (.cabecera--dinamico).
+import { site } from '../data/site';
+import type { Enlace } from '../data/site';
+interface Props { variante?: string; cta?: Enlace | null }
+const { variante = 'dinamico', cta = null } = Astro.props;
+const boton = cta && cta.url && cta.texto ? cta : null;
+---
+
+<header class={`cabecera cabecera--${variante}`}>
+  <div class="contenedor cabecera-fila">
+    <a href="/" class="marca" aria-label={`${site.nombre}, inicio`}>
+      {
+        site.logo ? (
+          <img src={site.logo} alt={site.nombre} class="marca-logo" width="160" height="40" />
+        ) : (
+          <>
+            <span class="marca-signo" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+                <path d="M15 4h9L17 36H8z" fill="var(--c-acento)" />
+                <circle cx="27" cy="20" r="5" stroke="currentColor" stroke-width="3" />
+              </svg>
+            </span>
+            <span class="marca-nombre">{site.nombre}</span>
+          </>
+        )
+      }
+    </a>
+    <nav class="cabecera-nav" aria-label="Menú principal">
+      {site.menu.map((e) => <a href={e.url}>{e.texto}</a>)}
+    </nav>
+    {boton && <a href={boton.url} class="btn cabecera-cta">{boton.texto}</a>}
+    {
+      (site.menu.length > 0 || boton) && (
+        <details class="menu-movil">
+          <summary aria-label="Abrir el menú">
+            <span class="menu-movil-icono" aria-hidden="true" />
+            <span>Menú</span>
+          </summary>
+          <nav class="menu-movil-panel" aria-label="Menú">
+            {site.menu.map((e) => <a href={e.url}>{e.texto}</a>)}
+            {boton && <a href={boton.url} class="btn">{boton.texto}</a>}
+          </nav>
+        </details>
+      )
+    }
+  </div>
+</header>
+<script is:inline>
+  document.querySelectorAll('.menu-movil a').forEach(function (a) {
+    a.addEventListener('click', function () { a.closest('details').open = false; });
+  });
+</script>

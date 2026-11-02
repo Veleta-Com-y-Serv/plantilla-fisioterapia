@@ -1,0 +1,35 @@
+---
+// Preguntas frecuentes: banda blanco roto. A la izquierda titular grande y `texto` (fijo al hacer scroll en
+// escritorio); a la derecha `preguntas: [{pregunta, respuesta}]` en acordeón nativo (details/summary) con el signo
+// en un paralelogramo naranja. Sin preguntas no se pinta.
+import { seccion, parrafos } from '../../data/site';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const lista = (s?.preguntas ?? []).filter((p) => p.pregunta);
+---
+
+{
+  s && lista.length > 0 && (
+    <section id={Astro.props.id} class="seccion banda-fondo">
+      <div class="contenedor grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <div class="lg:sticky lg:top-32">
+            {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+            {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+            {s.texto && <p class="titular-texto">{s.texto}</p>}
+          </div>
+        </div>
+        <div class="preguntas lg:col-span-7">
+          {lista.map((p) => (
+            <details>
+              <summary>{p.pregunta}</summary>
+              <div class="space-y-3">
+                {parrafos(p.respuesta).map((t) => <p>{t}</p>)}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

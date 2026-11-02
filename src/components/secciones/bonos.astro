@@ -1,0 +1,58 @@
+---
+// Bonos: banda petróleo hondo. Titular y `texto`; columnas (4 en escritorio) con el filo de arriba en diagonal y
+// `bonos: [{nombre, precio, sesiones, incluye, destacado}]`: `incluye` separado por «;» (lista con marcas);
+// `destacado: true` = columna naranja con «El más elegido». `cta` (opcional) = botón de cada bono.
+// Sin precio no hay precio; sin bonos no se pinta.
+import { seccion, cadena, enlace, partes, externo } from '../../data/site';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const bonos = (s?.bonos ?? []).filter((b) => cadena(b.nombre));
+const cta = enlace(s?.cta);
+---
+
+{
+  s && bonos.length > 0 && (
+    <section id={Astro.props.id} class="seccion banda-honda oscura">
+      <div class="contenedor">
+        <div class="cabeza">
+          <div>
+            {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+            {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+          </div>
+          {s.texto && <p class="text-[1.15rem] suave">{s.texto}</p>}
+        </div>
+        <ul class="bonos" style={`--n:${Math.min(bonos.length, 4)}`}>
+          {bonos.map((b) => {
+            const destacado = b.destacado === true;
+            const incluye = partes(b.incluye);
+            return (
+              <li class:list={['bono', destacado && 'bono--destacado']}>
+                {destacado && <p class="bono-marca">El más elegido</p>}
+                <h3>{b.nombre}</h3>
+                {cadena(b.sesiones) && <p class="bono-sesiones">{b.sesiones}</p>}
+                {cadena(b.precio) && <p class="bono-precio">{b.precio}</p>}
+                {cadena(b.texto) && <p class="suave">{b.texto}</p>}
+                {incluye.length > 0 && (
+                  <ul>
+                    {incluye.map((x) => (
+                      <li>
+                        <Icono nombre="check" tam={18} class="mt-1 shrink-0" />
+                        <span>{x}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {cta && (
+                  <a class:list={[destacado ? 'btn' : 'btn-sec', 'mt-4']} href={cta.url} {...(externo(cta.url) && { rel: 'noopener', target: '_blank' })}>
+                    {cta.texto}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  )
+}

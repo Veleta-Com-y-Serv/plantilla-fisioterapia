@@ -1,0 +1,69 @@
+---
+// Tratamientos: banda blanco roto. Cabeza partida (antetítulo y título a la izquierda; `texto` y `cta` a la
+// derecha), franja de foto a sangre (`imagen`, opcional) y rejilla de 3 columnas en escritorio con
+// `tratamientos: [{nombre, texto, duracion, modalidad, precio}]`: número, nombre en mayúsculas condensadas, texto y,
+// abajo, duración, modalidad («Presencial», «A domicilio»…) y precio. Lo vacío no se pinta.
+import { seccion, cadena, enlace, externo } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const lista = (s?.tratamientos ?? []).filter((t) => cadena(t.nombre));
+const foto = cadena(s?.imagen);
+const cta = enlace(s?.cta);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class="seccion banda-fondo">
+      <div class="contenedor">
+        <div class="cabeza">
+          <div>
+            {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+            {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+          </div>
+          {(s.texto || cta) && (
+            <div>
+              {s.texto && <p class="text-[1.15rem] suave">{s.texto}</p>}
+              {cta && <a class="btn btn-petroleo mt-7" href={cta.url} {...(externo(cta.url) && { rel: 'noopener', target: '_blank' })}>{cta.texto}</a>}
+            </div>
+          )}
+        </div>
+      </div>
+      {foto && (
+        <div class="franja-foto">
+          <Imagen src={foto} alt={altSeccion(s)} ancho={1920} alto={820} />
+        </div>
+      )}
+      {lista.length > 0 && (
+        <div class="contenedor">
+          <ul class="tratamientos">
+            {lista.map((t, i) => {
+              const modalidad = cadena(t.modalidad);
+              return (
+                <li class="tratamiento">
+                  <p class="tratamiento-num">{String(i + 1).padStart(2, '0')}</p>
+                  <h3>{t.nombre}</h3>
+                  {cadena(t.texto) && <p class="suave">{t.texto}</p>}
+                  {(cadena(t.duracion) || modalidad || cadena(t.precio)) && (
+                    <div class="tratamiento-pie">
+                      {cadena(t.duracion) && (
+                        <span class="inline-flex items-center gap-1.5 text-[.9rem] font-semibold">
+                          <Icono nombre="reloj" tam={18} />
+                          {t.duracion}
+                        </span>
+                      )}
+                      {modalidad && <span class:list={['etiqueta', /domicilio/i.test(modalidad) && 'etiqueta--domicilio']}>{modalidad}</span>}
+                      {cadena(t.precio) && <span class="precio">{t.precio}</span>}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}

@@ -1,0 +1,93 @@
+# Metadatos de la plantilla para el catálogo de NoExpertise.
+id: fisioterapia
+nombre: Fisioterapia y osteopatía
+descripcion: Web dinámica para fisios y osteópatas, con tratamientos, dolencias, método, bonos, equipo y cita.
+sectores:
+  - { id: fisioterapia, nombre: Fisioterapia }
+  - { id: osteopatia, nombre: Osteopatía }
+  - { id: rehabilitacion, nombre: Rehabilitación }
+  - { id: podologia, nombre: Podología }
+  - { id: quiromasaje, nombre: Quiromasaje }
+secciones:
+  - { id: hero, nombre: Portada }
+  - { id: cifras, nombre: Cifras }
+  - { id: tratamientos, nombre: Tratamientos }
+  - { id: dolencias, nombre: Dolencias }
+  - { id: proceso, nombre: Método }
+  - { id: bonos, nombre: Bonos }
+  - { id: equipo, nombre: Equipo }
+  - { id: opiniones, nombre: Opiniones }
+  - { id: preguntas, nombre: Preguntas frecuentes }
+  - { id: cita, nombre: Pedir cita }
+  - { id: contacto, nombre: Contacto }
+estilo: dinamico
+plan_minimo: gratis
+version: 1.0.0
+base: astrowind
+demo_url: https://demo-plantilla-fisioterapia.noexpertise.com
+activa: true
+orden: 500
+
+# Asistente de puesta en marcha (NoExpertise): un paso por pantalla. Rutas del site sin índices;
+# tipos: texto y lista (la IA propone), datos, fotos, eleccion (colores y logo) y repaso.
+asistente:
+  - id: negocio
+    titulo: "Tu centro"
+    pregunta: "¿Cómo se llama tu centro, qué haces (fisioterapia, osteopatía, rehabilitación…) y dónde atiendes?"
+    ayuda: "Si vas a domicilio, si hace falta volante, en qué horarios atiendes y qué te hace distinto."
+    tipo: texto
+    campos: [nombre, eslogan, seo.titulo, seo.descripcion, secciones.hero.antetitulo, secciones.hero.titulo, secciones.hero.texto, secciones.hero.items]
+  - id: contacto
+    titulo: "Cómo te encuentran"
+    pregunta: "¿Dónde está el centro y cómo te pueden llamar o escribir?"
+    ayuda: "Solo lo que quieras que vean tus pacientes. Lo que dejes vacío no sale en tu web."
+    tipo: datos
+    campos: [contacto.telefono, contacto.whatsapp, contacto.email, contacto.direccion, contacto.horario, secciones.cita.enlace_agenda, redes.instagram, redes.facebook]
+  - id: tratamientos
+    titulo: "Tus tratamientos"
+    pregunta: "¿Qué tratamientos ofreces? Uno por línea, con la duración, si es en el centro o a domicilio y el precio si quieres."
+    ayuda: "Si lo prefieres, añádelos luego en Contenido."
+    tipo: lista
+    campos: [secciones.tratamientos.tratamientos]
+  - id: dolencias
+    titulo: "Qué tratas"
+    pregunta: "¿Qué dolencias o lesiones ves más en consulta? Espalda, cuello, rodilla, lesiones deportivas…"
+    tipo: texto
+    campos: [secciones.dolencias.titulo, secciones.dolencias.texto, secciones.dolencias.items]
+  - id: proceso
+    titulo: "Tu método"
+    pregunta: "¿Cómo trabajas con un paciente, desde la primera valoración hasta el alta?"
+    tipo: texto
+    campos: [secciones.proceso.titulo, secciones.proceso.texto, secciones.proceso.items]
+  - id: bonos
+    titulo: "Bonos"
+    pregunta: "¿Tienes bonos de varias sesiones? Uno por línea, con cuántas sesiones, qué incluyen y el precio si quieres."
+    ayuda: "Si no trabajas con bonos, salta este paso y oculta el apartado en Contenido."
+    tipo: lista
+    campos: [secciones.bonos.bonos]
+  - id: equipo
+    titulo: "Tu equipo"
+    pregunta: "¿Quién atiende en el centro? Nombre y especialidad de cada persona, una por línea."
+    ayuda: "Las fotos las pones luego en Contenido."
+    tipo: lista
+    campos: [secciones.equipo.personas]
+  - id: preguntas
+    titulo: "Preguntas frecuentes"
+    pregunta: "¿Qué te preguntan más a menudo antes de la primera sesión? Escribe cada pregunta y lo que respondes."
+    ayuda: "Si lo prefieres, añádelas luego en Contenido."
+    tipo: lista
+    campos: [secciones.preguntas.preguntas]
+  - id: fotos
+    titulo: "Tus fotos"
+    pregunta: "Pon una foto de portada, una del centro y, si quieres, alguna más de las salas."
+    ayuda: "Sube las tuyas o elige una del banco. Las que no cambies se quedan como están."
+    tipo: fotos
+    campos: [secciones.hero.imagen, secciones.tratamientos.imagen, secciones.dolencias.imagen, secciones.proceso.imagen, secciones.equipo.galeria, secciones.opiniones.imagen, secciones.contacto.imagen]
+  - id: aspecto
+    titulo: "Colores y logo"
+    pregunta: "Elige los colores de tu web y, si tienes, tu logo."
+    tipo: eleccion
+    campos: [colores.primario, colores.acento, logo]
+  - id: repaso
+    titulo: "Repaso"
+    tipo: repaso

@@ -1,0 +1,47 @@
+---
+// Método (proceso): banda petróleo muy claro. Con `imagen`, fila 50/50 con la foto a sangre a la izquierda (borde
+// interior en diagonal) y los pasos a la derecha; sin ella, pasos en 4 columnas a todo el ancho.
+// `items: [{titulo, texto, icono}]`, numerados 01, 02… con número hueco enorme en naranja.
+import { seccion, cadena, enlace } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const pasos = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const foto = cadena(s?.imagen);
+const cta = enlace(s?.cta);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class:list={['banda-clara', foto ? 'mitades' : 'seccion']}>
+      <div class:list={[foto ? 'mitad mitad--der' : 'contenedor']}>
+        {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+        {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+        {s.texto && <p class="titular-texto">{s.texto}</p>}
+        {pasos.length > 0 && (
+          <ol class:list={['pasos mt-10', !foto && 'pasos--ancha']} style={`--n:${Math.min(pasos.length, 4)}`}>
+            {pasos.map((p) => (
+              <li class="paso">
+                <div>
+                  <h3>
+                    {cadena(p.icono) && <Icono nombre={cadena(p.icono)} tam={22} class="shrink-0 text-primario" />}
+                    {p.titulo}
+                  </h3>
+                  {cadena(p.texto) && <p class="mt-2 suave">{p.texto}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+        {cta && <a class="btn mt-10" href={cta.url}>{cta.texto}</a>}
+      </div>
+      {foto && (
+        <div class="mitad-foto mitad-foto--izq">
+          <Imagen src={foto} alt={altSeccion(s)} ancho={1200} alto={1400} />
+        </div>
+      )}
+    </section>
+  )
+}

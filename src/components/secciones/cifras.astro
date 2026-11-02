@@ -1,0 +1,31 @@
+---
+// Banda de cifras a todo el ancho en petróleo pleno: `antetitulo`, `titulo` y `items: [{titulo, texto}]`
+// (titulo = la cifra, texto = qué cuenta) con números enormes condensados y un trazo naranja. Sin cifras no se pinta.
+import { seccion, cadena } from '../../data/site';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const cifras = (s?.items ?? []).filter((i) => cadena(i.titulo));
+---
+
+{
+  s && cifras.length > 0 && (
+    <section id={Astro.props.id} class="seccion banda-petroleo oscura">
+      <div class="contenedor">
+        {(s.antetitulo || s.titulo) && (
+          <div class="mb-12 md:mb-16">
+            {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+            {s.titulo && <h2 class="titulo-seccion max-w-[18ch]">{s.titulo}</h2>}
+          </div>
+        )}
+        <ul class="cifras" style={`--n:${Math.min(cifras.length, 4)}`}>
+          {cifras.map((c) => (
+            <li>
+              <p class="cifra-num condensada">{c.titulo}</p>
+              {cadena(c.texto) && <p class="mt-3 text-[1.05rem] uppercase tracking-[.08em] suave">{c.texto}</p>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

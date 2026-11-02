@@ -1,0 +1,39 @@
+---
+// Opiniones: banda con `imagen` a sangre bajo un velo petróleo hondo (sin foto, petróleo hondo pleno). Titular y
+// `testimonios: [{texto, autor, nota}]` en 3 columnas con comillas enormes naranjas y filo a la izquierda.
+// Sin testimonios no se pinta.
+import { seccion, cadena } from '../../data/site';
+import Imagen from '../ui/Imagen.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const lista = (s?.testimonios ?? []).filter((t) => cadena(t.texto));
+const foto = cadena(s?.imagen);
+---
+
+{
+  s && lista.length > 0 && (
+    <section id={Astro.props.id} class="seccion opiniones oscura">
+      {foto && <Imagen src={foto} alt="" ancho={1920} alto={1080} class="opiniones-foto" />}
+      {foto && <div class="opiniones-velo" aria-hidden="true" />}
+      <div class="contenedor">
+        <div class="mb-12 md:mb-16">
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && <h2 class="titulo-seccion max-w-[20ch]">{s.titulo}</h2>}
+          {s.texto && <p class="titular-texto">{s.texto}</p>}
+        </div>
+        <ul class="testimonios" style={`--n:${Math.min(lista.length, 3)}`}>
+          {lista.map((t) => (
+            <li class="testimonio">
+              <p class="testimonio-comillas" aria-hidden="true">“</p>
+              <blockquote>{t.texto}</blockquote>
+              <div class="mt-auto">
+                {cadena(t.autor) && <p class="testimonio-autor">{t.autor}</p>}
+                {cadena(t.nota) && <p class="text-[.9rem] suave">{t.nota}</p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

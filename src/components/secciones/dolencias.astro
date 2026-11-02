@@ -1,0 +1,43 @@
+---
+// Dolencias: banda naranja quemado. Con `imagen`, fila 50/50 con la foto a sangre a la derecha (borde interior en
+// diagonal); sin ella, rejilla de 4 columnas a todo el ancho. `antetitulo`, `titulo`, `texto` e
+// `items: [{titulo, texto, icono}]` (espalda, rodilla, deportiva…) con el icono en un paralelogramo claro.
+import { seccion, cadena } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const items = (s?.items ?? []).filter((i) => cadena(i.titulo));
+const foto = cadena(s?.imagen);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class:list={['banda-quemada oscura', foto ? 'mitades' : 'seccion']}>
+      <div class:list={[foto ? 'mitad mitad--izq' : 'contenedor']}>
+        {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+        {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+        {s.texto && <p class="titular-texto">{s.texto}</p>}
+        {items.length > 0 && (
+          <ul class:list={['dolencias mt-10', !foto && 'dolencias--ancha']}>
+            {items.map((d) => (
+              <li class="dolencia">
+                <span class="icono-caja"><Icono nombre={cadena(d.icono) || 'check'} tam={22} /></span>
+                <div>
+                  <h3>{d.titulo}</h3>
+                  {cadena(d.texto) && <p class="mt-1 text-[.95rem] suave">{d.texto}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      {foto && (
+        <div class="mitad-foto mitad-foto--der">
+          <Imagen src={foto} alt={altSeccion(s)} ancho={1200} alto={1400} />
+        </div>
+      )}
+    </section>
+  )
+}

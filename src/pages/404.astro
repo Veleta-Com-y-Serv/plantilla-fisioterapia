@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, tel } from '../data/site';
+const c = site.contacto;
+---
+
+<Base titulo="Página no encontrada">
+  <section class="hero-dinamico hero-sin-foto">
+    <div class="hero-cuerpo">
+      <div class="contenedor">
+        <p class="antetitulo">Error 404</p>
+        <h1 class="hero-titulo">Esta página no existe</h1>
+        <p class="hero-texto">Puede que el enlace esté mal o que la página se haya movido. Vuelve al inicio o llámanos.</p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a class="btn" href="/">Volver al inicio</a>
+          {c.telefono && <a class="btn-sec" href={tel(c.telefono)}>{c.telefono}</a>}
+          {!c.telefono && c.email && <a class="btn-sec" href={`mailto:${c.email}`}>{c.email}</a>}
+        </div>
+      </div>
+    </div>
+    <div class="hero-franja" aria-hidden="true"></div>
+  </section>
+</Base>

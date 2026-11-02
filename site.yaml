@@ -1,0 +1,177 @@
+# Contenido de la web. Es lo único que rellena la plataforma NoExpertise.
+# Las secciones se muestran en el orden de este fichero. Para ocultar una: activa: false.
+# Apartado nuevo: un id propio (es su ancla, /#id) con `tipo:` = el diseño de otra sección o `texto`.
+# Listas planas: nunca una lista dentro de un elemento de lista. Precios siempre entre comillas.
+nombre: Elástica Fisioterapia
+eslogan: Fisioterapia y osteopatía en Jerez de la Frontera y a domicilio.
+sector: fisioterapia
+logo: ""          # ruta a una imagen en public/ (p. ej. /logo.svg). Vacío = nombre en texto.
+colores:
+  primario: "#1f4e5a"
+  acento: "#d9692f"
+  fondo: "#f6f1ea"
+  texto: "#1b2326"
+contacto:
+  telefono: "956 48 27 13"
+  email: citas@elasticafisio.es
+  direccion: "Calle Larga 58, local 3, 11403 Jerez de la Frontera (Cádiz)"
+  horario: "Lunes a viernes, de 8:30 a 14:00 y de 16:00 a 21:00. Sábados, de 9:00 a 13:00."
+  whatsapp: "655 31 90 24"
+redes:
+  instagram: https://www.instagram.com/
+  facebook: https://www.facebook.com/
+  linkedin: ""
+menu:
+  - { texto: Tratamientos, url: "/#tratamientos" }
+  - { texto: Dolencias, url: "/#dolencias" }
+  - { texto: Método, url: "/#proceso" }
+  - { texto: Bonos, url: "/#bonos" }
+  - { texto: Equipo, url: "/#equipo" }
+  - { texto: Contacto, url: "/#contacto" }
+boton_cabecera: { texto: Pedir cita, url: "/#cita" }
+seo:
+  titulo: Elástica Fisioterapia · Fisioterapia y osteopatía en Jerez
+  descripcion: "Centro de fisioterapia y osteopatía en Jerez de la Frontera: espalda, lesiones deportivas, rehabilitación y suelo pélvico. También a domicilio."
+  tipo: MedicalBusiness
+marca_pie: true
+
+secciones:
+  hero:
+    activa: true
+    antetitulo: Fisioterapia y osteopatía · Jerez
+    titulo: Vuelve a moverte sin dolor.
+    texto: "Tratamos espalda, cuello, rodillas y lesiones deportivas con las manos y con ejercicio. En el centro de Jerez o en tu casa."
+    imagen: /fotos/hero.jpg
+    cta: { texto: Pedir cita, url: "/#cita" }
+    cta_secundario: { texto: Ver tratamientos, url: "/#tratamientos" }
+    items:
+      - { titulo: Sin volante médico, texto: "Pide cita directamente, cuando lo necesites.", icono: check }
+      - { titulo: También a domicilio, texto: "Vamos a tu casa en Jerez y alrededores.", icono: casa }
+      - { titulo: Cita en 48 horas, texto: "Mañanas, tardes y sábados por la mañana.", icono: reloj }
+
+  cifras:
+    activa: true
+    antetitulo: En números
+    titulo: Doce años poniendo Jerez en marcha
+    items:
+      - { titulo: "12", texto: años de consulta en Jerez }
+      - { titulo: "+9.000", texto: pacientes atendidos }
+      - { titulo: "5", texto: fisioterapeutas colegiados }
+      - { titulo: "48 h", texto: para tu primera cita }
+
+  tratamientos:
+    activa: true
+    antetitulo: Tratamientos
+    titulo: Manos, ejercicio y un plan claro
+    texto: "Cada sesión empieza con una valoración y termina con pautas para casa. Te damos factura para tu seguro o mutua."
+    imagen: /fotos/tratamientos.jpg
+    tratamientos:
+      - { nombre: Fisioterapia general, texto: "Dolor de espalda, cuello y hombro, contracturas y sobrecargas. Terapia manual y ejercicio terapéutico.", duracion: "50 min", modalidad: Presencial, precio: "40 €" }
+      - { nombre: Osteopatía, texto: "Valoración global y técnicas suaves sobre articulaciones y tejidos para los dolores que vuelven.", duracion: "60 min", modalidad: Presencial, precio: "50 €" }
+      - { nombre: Fisioterapia deportiva, texto: "Esguinces, roturas fibrilares y tendinopatías. Readaptación hasta que vuelves a entrenar.", duracion: "50 min", modalidad: Presencial, precio: "45 €" }
+      - { nombre: Rehabilitación tras cirugía, texto: "Prótesis de rodilla y cadera, ligamento cruzado y fracturas, de la mano de tu traumatólogo.", duracion: "50 min", modalidad: "Presencial y a domicilio", precio: "40 €" }
+      - { nombre: Suelo pélvico, texto: "Embarazo, posparto, incontinencia y dolor pélvico, en una sala privada con fisioterapeuta especializada.", duracion: "50 min", modalidad: Presencial, precio: "50 €" }
+      - { nombre: Fisioterapia a domicilio, texto: "Para personas mayores o con movilidad reducida. Llevamos camilla y material.", duracion: "50 min", modalidad: A domicilio, precio: "55 €" }
+    cta: { texto: Pedir cita, url: "/#cita" }
+
+  dolencias:
+    activa: true
+    antetitulo: Qué te duele
+    titulo: Lo que más vemos en consulta
+    texto: "Si no ves aquí lo tuyo, llámanos: te decimos con franqueza si podemos ayudarte o a qué especialista acudir."
+    imagen: /fotos/dolencias.jpg
+    items:
+      - { titulo: Espalda y lumbares, texto: "Lumbalgia, ciática y hernia discal.", icono: columna }
+      - { titulo: Cuello y cervicales, texto: "Tensión, mareos y dolor de cabeza.", icono: cabeza }
+      - { titulo: Hombro, texto: "Tendinitis y hombro congelado.", icono: brazo }
+      - { titulo: Rodilla, texto: "Menisco, ligamentos y dolor al correr.", icono: rodilla }
+      - { titulo: Lesiones deportivas, texto: "Esguinces, roturas y sobrecargas.", icono: corredor }
+      - { titulo: Pie y tobillo, texto: "Fascitis plantar y esguinces de repetición.", icono: pie }
+      - { titulo: Mandíbula, texto: "Bruxismo y dolor al masticar.", icono: cabeza }
+      - { titulo: Embarazo y posparto, texto: "Dolor pélvico y suelo pélvico.", icono: corazon }
+
+  proceso:
+    activa: true
+    antetitulo: Método
+    titulo: Cuatro pasos para que no vuelva
+    texto: "No nos limitamos a quitar el dolor: buscamos por qué aparece y te enseñamos a evitarlo."
+    imagen: /fotos/metodo.jpg
+    items:
+      - { titulo: Valoración, texto: "Escuchamos tu historia, vemos cómo te mueves y revisamos tus pruebas.", icono: lupa }
+      - { titulo: Tratamiento, texto: "Terapia manual, punción seca o ejercicio, según lo que necesites.", icono: mano }
+      - { titulo: Ejercicio en casa, texto: "Te llevas una tabla sencilla con vídeos para hacer entre sesiones.", icono: corredor }
+      - { titulo: Revisión, texto: "Medimos cómo avanzas y espaciamos las sesiones hasta el alta.", icono: grafico }
+
+  bonos:
+    activa: true
+    antetitulo: Bonos
+    titulo: Bonos para seguir el tratamiento
+    texto: "Los bonos duran seis meses y se pueden compartir con tu familia."
+    bonos:
+      - { nombre: Sesión suelta, precio: "40 €", sesiones: "1 sesión", incluye: "Valoración; Tratamiento de 50 min; Pautas para casa", destacado: false }
+      - { nombre: Bono 5, precio: "180 €", sesiones: "5 sesiones", incluye: "Valoración inicial; Tabla de ejercicios con vídeos; Seguimiento por WhatsApp", destacado: true }
+      - { nombre: Bono 10, precio: "340 €", sesiones: "10 sesiones", incluye: "Valoración inicial; Tabla de ejercicios con vídeos; Informe para tu médico", destacado: false }
+      - { nombre: Bono deportista, precio: "150 €", sesiones: "4 sesiones", incluye: "Descarga muscular; Readaptación al entrenamiento; Vendaje neuromuscular", destacado: false }
+    cta: { texto: Reservar mi bono, url: "/#cita" }
+
+  equipo:
+    activa: true
+    antetitulo: Equipo
+    titulo: Un equipo, una misma manera de trabajar
+    texto: "Todos colegiados y en formación continua. Nos reunimos cada semana para comentar los casos."
+    personas:
+      - { nombre: Lucía Domínguez, cargo: "Fisioterapeuta y osteópata · Directora", foto: /placeholders/persona.svg, texto: "Osteopatía y dolor crónico de espalda." }
+      - { nombre: Álvaro Sánchez, cargo: Fisioterapeuta deportivo, foto: /placeholders/persona.svg, texto: "Readaptación de lesiones y punción seca." }
+      - { nombre: Rocío Pérez, cargo: Fisioterapeuta de suelo pélvico, foto: /placeholders/persona.svg, texto: "Embarazo, posparto y dolor pélvico." }
+      - { nombre: Manuel Ortega, cargo: Fisioterapeuta a domicilio, foto: /placeholders/persona.svg, texto: "Rehabilitación de personas mayores y neurológica." }
+    galeria:
+      - /fotos/sala-camillas.jpg
+      - /fotos/sala-ejercicio.jpg
+      - /fotos/material.jpg
+      - /fotos/recepcion.jpg
+
+  opiniones:
+    activa: true
+    antetitulo: Opiniones
+    titulo: Lo que cuentan nuestros pacientes
+    imagen: /fotos/opiniones.jpg
+    testimonios:
+      - { texto: "Llegué con una ciática que no me dejaba ni conducir. En tres semanas estaba otra vez trabajando y con una tabla de ejercicios que sigo haciendo.", autor: Francisco M., nota: "Ciática, Jerez" }
+      - { texto: "Me operaron de la rodilla y me acompañaron hasta volver a correr. Explican todo y no te hacen perder el tiempo.", autor: Marta G., nota: "Ligamento cruzado, Guadalcacín" }
+      - { texto: "Vienen a casa a tratar a mi madre dos veces por semana. Puntuales, pacientes y ella les espera con ganas.", autor: Inmaculada R., nota: "Fisioterapia a domicilio, Jerez" }
+
+  preguntas:
+    activa: true
+    antetitulo: Preguntas frecuentes
+    titulo: Antes de tu primera sesión
+    texto: "Si te queda alguna duda, llámanos o escríbenos por WhatsApp."
+    preguntas:
+      - { pregunta: "¿Necesito volante del médico?", respuesta: "No. Puedes pedir cita directamente. Si tienes informes o pruebas de imagen, tráelos a la primera sesión." }
+      - { pregunta: "¿Qué ropa llevo a la sesión?", respuesta: "Ropa cómoda con la que puedas moverte. Si el problema es de rodilla o tobillo, mejor un pantalón corto." }
+      - { pregunta: "¿Cuántas sesiones voy a necesitar?", respuesta: "Depende de la lesión. En la valoración te damos una estimación y la revisamos cada pocas sesiones." }
+      - { pregunta: "¿Trabajáis con seguros y mutuas?", respuesta: "Te damos factura con el número de colegiado para que tu seguro te la reembolse si lo cubre. Pregúntanos por los convenios con mutuas deportivas." }
+      - { pregunta: "¿A qué zonas vais a domicilio?", respuesta: "A todo Jerez, Guadalcacín, La Barca, Estella del Marqués y El Puerto de Santa María." }
+      - { pregunta: "¿Y si tengo que cancelar?", respuesta: "Avísanos con 24 horas de antelación y cambiamos la cita sin coste." }
+
+  cita:
+    activa: true
+    antetitulo: Pide cita
+    titulo: Tu primera sesión, esta semana
+    texto: "Cuéntanos qué te pasa y cuándo te viene bien. Te llamamos en menos de 24 horas laborables para darte hora."
+    items:
+      - { titulo: Nos escribes, texto: "Por el formulario, por WhatsApp o por teléfono." }
+      - { titulo: Te damos hora, texto: "En el centro o en tu casa, de mañana o de tarde." }
+      - { titulo: Primera sesión, texto: "Valoración y tratamiento desde el primer día." }
+    cta: { texto: Escribir por WhatsApp, url: "https://wa.me/34655319024" }
+    enlace_agenda: "https://www.elasticafisio.es/agenda"
+    texto_agenda: Reservar en la agenda online
+    nota: "Si no puedes venir, avísanos con 24 horas y cambiamos la cita sin coste."
+    boton: Pedir mi cita
+
+  contacto:
+    activa: true
+    antetitulo: Contacto
+    titulo: Dónde estamos
+    texto: "En calle Larga, a dos minutos de la plaza del Arenal. Local a pie de calle, sin escalones y con aparcamiento público cerca."
+    imagen: /fotos/fachada.jpg
+    boton: Enviar mensaje
