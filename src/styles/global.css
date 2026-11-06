@@ -114,7 +114,7 @@
   .hero-sin-foto::before, .hero-sin-foto::after { display: none; }
   .hero-cuerpo { flex: 1; display: flex; align-items: center; padding-block: 3.5rem 3rem; }
   @media (min-width: 768px) { .hero-cuerpo { padding-block: 5rem 4.5rem; } }
-  .hero-titulo { margin-top: 1.25rem; font-size: clamp(3rem, 8vw, 7rem); line-height: .96; max-width: 11ch; }
+  .hero-titulo { margin-top: 1.25rem; font-size: clamp(2.6rem, 6.2vw, 5.75rem); line-height: .96; max-width: 14ch; overflow-wrap: normal; hyphens: auto; }
   .hero-texto { margin-top: 1.5rem; max-width: 34rem; font-size: 1.2rem; color: var(--sobre-oscuro); }
   .hero-franja { --c: clamp(1.25rem, 3vw, 3rem); position: relative; background: var(--quemado); color: var(--c-fondo); clip-path: polygon(0 var(--c), 100% 0, 100% 100%, 0 100%); padding-top: calc(var(--c) + 1.25rem); padding-bottom: calc(var(--d) + 1rem); }
   .hero-franja ul { display: grid; gap: 1.1rem; }
